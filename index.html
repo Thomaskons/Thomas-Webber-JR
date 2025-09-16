@@ -60,14 +60,16 @@
     .timeline-dot {position:absolute;left:50%;top:1rem;width:20px;height:20px;background:var(--teal);border:4px solid #fff;border-radius:50%;transform:translateX(-50%)}
     .timeline::after { content: ""; display: table; clear: both; } /* Clearfix to prevent overlap */
 
-    /* Current Investment Projects (enhanced card style) */
+    /* Current Investment Projects (enhanced modern card style) */
     .plans-header { text-align: center; margin-bottom: 40px; }
     .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .plan-card { background:#fff; padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px var(--shadow); }
-    .plan-card h3 { margin-top: 0; color: var(--teal); }
-    .plan-card ul { list-style-type: none; padding: 0; }
-    .plan-card li { margin-bottom: 10px; font-size: 0.95rem; }
-    .plan-card li strong { color: var(--primary); }
+    .plan-card { background:#fff; padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .plan-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px var(--shadow); }
+    .plan-card h3 { margin-top: 0; color: var(--teal); font-size: 1.2rem; }
+    .plan-card ul { list-style-type: disc; padding-left: 20px; margin: 0; }
+    .plan-card ul li { margin-bottom: 8px; font-size: 0.95rem; }
+    .plan-card ul li strong { color: var(--primary); }
+    .plan-card ul ul { list-style-type: circle; padding-left: 20px; }
     .cta-button { display: block; text-align: center; margin-top: 20px; padding: 10px; background: var(--gradient-primary); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; }
     .cta-button:hover { opacity: 0.9; }
     .disclaimer { font-size: 0.8em; color: #666; text-align: center; margin-top: 40px; }
@@ -106,7 +108,7 @@
         </div>
       </div>
       <div class="hero-portrait">
-        <img src="https://imgpx.com/vLZDFAMqejHK.png" alt="Thomas Webber Portrait">
+        <img src="https://imgpx.com/NV9DWujd8ZBE.jpg" alt="Thomas Webber Portrait">
       </div>
     </div>
   </section>
@@ -147,50 +149,102 @@
   <section class="section section-alt" id="projects">
     <div class="section-title"><h2>Current Investment Projects</h2></div>
     <div class="plans-header">
-      <p>Explore examples of our clients' ongoing investment journeys. These are anonymized for privacy and illustrate personalized strategies. Results vary based on market conditions.</p>
+      <p>Explore examples of our clients’ ongoing investment journeys. All names are anonymized for confidentiality, and results vary depending on market conditions.</p>
     </div>
     <div class="plans-grid">
       <div class="plan-card">
-        <h3>Alex Thompson</h3>
+        <h3>Client: Alex Th*n</h3>
         <ul>
-          <li><strong>Initial Investment:</strong> $365,000 (across savings, IRA, and brokerage)</li>
-          <li><strong>Growth % (Estimated Annual):</strong> 5-7% (via diversification to index funds/ETFs)</li>
-          <li><strong>Plan Type:</strong> Diversification and retirement maximization</li>
-          <li><strong>Duration/Status:</strong> 2-3 years ongoing; reduced tech concentration from 80% to 40%</li>
-          <li><strong>Other Details:</strong> Emergency fund built to $36,000; debt payoff prioritized</li>
+          <li>Initial Investment: $365,000 (across savings, IRA, and brokerage accounts)</li>
+          <li>Estimated Annual Growth: 5–7%</li>
+          <li>Portfolio Allocation:
+            <ul>
+              <li>Stocks: Apple (AAPL), Microsoft (MSFT), Johnson & Johnson (JNJ) – 40%</li>
+              <li>ETFs: S&P 500 ETF (SPY), Total Market ETF (VTI) – 35%</li>
+              <li>Bonds: US Treasury & corporate bonds – 20%</li>
+              <li>Commodities: Gold ETF (GLD) – 5%</li>
+            </ul>
+          </li>
+          <li>Strategy: Retirement-focused diversification and risk reduction</li>
+          <li>Progress: 2–3 years ongoing; reduced tech exposure from 80% to 40%</li>
+          <li>Additional Achievements: Built a $36,000 emergency fund and prioritized debt reduction</li>
         </ul>
       </div>
       <div class="plan-card">
-        <h3>Wei and Mei Li</h3>
+        <h3>Client: Sarah M*r</h3>
         <ul>
-          <li><strong>Initial Investment:</strong> $1,185,000 (savings, 401(k)s, brokerage)</li>
-          <li><strong>Growth % (Assumed for College Savings):</strong> 5% annual (projected for 529 plans)</li>
-          <li><strong>Plan Type:</strong> College funding and early retirement</li>
-          <li><strong>Duration/Status:</strong> 15 years ongoing; annual contributions of $15,000</li>
-          <li><strong>Other Details:</strong> Transition to low-cost index funds; estate planning integrated</li>
+          <li>Initial Investment: $135,000 (savings and mutual funds)</li>
+          <li>Estimated Annual Growth: 4–6%</li>
+          <li>Portfolio Allocation:
+            <ul>
+              <li>Stocks: Coca-Cola (KO), Procter & Gamble (PG) – 25%</li>
+              <li>Indices: MSCI World ETF – 30%</li>
+              <li>Bonds: Investment-grade corporate bonds – 30%</li>
+              <li>Commodities: Silver ETF (SLV) – 10%</li>
+              <li>Cash/Short-term: 5%</li>
+            </ul>
+          </li>
+          <li>Strategy: Moderate-risk growth with emergency fund planning</li>
+          <li>Progress: 18 months ongoing; increased bond allocation from 20% to 35%</li>
+          <li>Additional Achievements: Created a $12,000 emergency reserve</li>
         </ul>
       </div>
       <div class="plan-card">
-        <h3>Fin-Tech Founder</h3>
+        <h3>Client: James L*y</h3>
         <ul>
-          <li><strong>Initial Investment:</strong> $100 million (post-buyout liquidity)</li>
-          <li><strong>Growth %:</strong> Not specified; focus on asset protection and private investments</li>
-          <li><strong>Plan Type:</strong> High-net-worth wealth management</li>
-          <li><strong>Duration/Status:</strong> Ongoing; includes property development and VC fund</li>
-          <li><strong>Other Details:</strong> Tax savings via philanthropy; insurance solutions</li>
+          <li>Initial Investment: $14,000 (small brokerage account)</li>
+          <li>Estimated Annual Growth: 6–8%</li>
+          <li>Portfolio Allocation:
+            <ul>
+              <li>Stocks: Tesla (TSLA), Nvidia (NVDA), Alphabet (GOOGL) – 50%</li>
+              <li>ETFs: Nasdaq 100 ETF (QQQ) – 30%</li>
+              <li>Commodities: Bitcoin (BTC) & Gold ETF (GLD) – 10%</li>
+              <li>Cash: 10%</li>
+            </ul>
+          </li>
+          <li>Strategy: Early-stage growth with high-growth tech focus</li>
+          <li>Progress: 1 year ongoing; diversified holdings across 10 sectors</li>
+          <li>Additional Achievements: Opened a Roth IRA and set up recurring investments</li>
         </ul>
       </div>
       <div class="plan-card">
-        <h3>Emma</h3>
+        <h3>Client: Maria K*n</h3>
         <ul>
-          <li><strong>Initial Investment:</strong> Not quantified; house equity and divorce assets</li>
-          <li><strong>Growth %:</strong> Not specified; emphasis on retirement security</li>
-          <li><strong>Plan Type:</strong> Post-divorce financial planning</li>
-          <li><strong>Duration/Status:</strong> Ongoing; coordinated with insurance and accountant</li>
-          <li><strong>Other Details:</strong> Avoided house sale; car purchase negotiated</li>
+          <li>Initial Investment: $36,000 (savings and retirement accounts)</li>
+          <li>Estimated Annual Growth: 5–7%</li>
+          <li>Portfolio Allocation:
+            <ul>
+              <li>Stocks: Johnson & Johnson (JNJ), PepsiCo (PEP) – 20%</li>
+              <li>Indices: S&P 500 ETF (SPY), MSCI Emerging Markets ETF (EEM) – 40%</li>
+              <li>Bonds: Municipal & corporate bonds – 30%</li>
+              <li>Commodities: Gold ETF (GLD) – 10%</li>
+            </ul>
+          </li>
+          <li>Strategy: Retirement-focused diversification with international exposure</li>
+          <li>Progress: 2 years ongoing; increased international exposure from 10% to 25%</li>
+          <li>Additional Achievements: Established $5,000 emergency fund and reduced high-interest debt</li>
         </ul>
       </div>
-      <!-- Add more cards as needed -->
+      <div class="plan-card">
+        <h3>Client: Robert C*r</h3>
+        <ul>
+          <li>Initial Investment: $1,450,000 (multiple accounts including brokerage, IRA, and trust funds)</li>
+          <li>Estimated Annual Growth: 4–6%</li>
+          <li>Portfolio Allocation:
+            <ul>
+              <li>Stocks: Berkshire Hathaway (BRK.B), Apple (AAPL), Microsoft (MSFT) – 30%</li>
+              <li>ETFs: S&P 500 ETF (SPY), Nasdaq 100 ETF (QQQ) – 20%</li>
+              <li>Indices: MSCI World ETF, MSCI Emerging Markets ETF – 15%</li>
+              <li>Bonds: US Treasury, corporate bonds, municipal bonds – 25%</li>
+              <li>Commodities: Gold (GLD), Oil ETF (USO) – 5%</li>
+              <li>Cash/Short-term instruments: 5%</li>
+            </ul>
+          </li>
+          <li>Strategy: Wealth preservation, tax efficiency, and estate planning</li>
+          <li>Progress: 3–4 years ongoing; annual rebalancing for growth and tax optimization</li>
+          <li>Additional Achievements: Funded $200,000 emergency reserve and implemented estate strategies</li>
+        </ul>
+      </div>
     </div>
     <a href="#contact" class="cta-button">Schedule a Consultation</a>
     <p class="disclaimer">These examples are for illustrative purposes only. Past performance is no guarantee of future results. Consult a professional for personalized advice.</p>
