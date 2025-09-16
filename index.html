@@ -60,15 +60,16 @@
     .timeline-item:nth-child(even) .timeline-content {float:right;clear:both}
     .timeline-dot {position:absolute;left:50%;top:1rem;width:20px;height:20px;background:var(--teal);border:4px solid #fff;border-radius:50%;transform:translateX(-50%)}
 
-    /* Ongoing Projects (card style) */
-    .plans-section { max-width: 1200px; margin: auto; }
+    /* Current Investment Projects (enhanced card style) */
     .plans-header { text-align: center; margin-bottom: 40px; }
     .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .plan-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .plan-card h3 { margin-top: 0; }
+    .plan-card { background:#fff; padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px var(--shadow); }
+    .plan-card h3 { margin-top: 0; color: var(--teal); }
     .plan-card ul { list-style-type: none; padding: 0; }
-    .plan-card li { margin-bottom: 10px; }
-    .cta-button { display: block; text-align: center; margin-top: 20px; padding: 10px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    .plan-card li { margin-bottom: 10px; font-size: 0.95rem; }
+    .plan-card li strong { color: var(--primary); }
+    .cta-button { display: block; text-align: center; margin-top: 20px; padding: 10px; background: var(--gradient-primary); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; }
+    .cta-button:hover { opacity: 0.9; }
     .disclaimer { font-size: 0.8em; color: #666; text-align: center; margin-top: 40px; }
 
     /* Testimonials */
@@ -130,7 +131,7 @@
     <p>Providing professional investigations for traditional financial scams and crypto fraud recovery, using blockchain forensics, legal coordination, and international tracing strategies.</p>
   </section>
 
-  <!-- Experience -->
+  <!-- Experience Timeline -->
   <section class="section" id="experience">
     <div class="section-title"><h2>Experience Timeline</h2></div>
     <div class="timeline">
@@ -144,57 +145,55 @@
 
   <!-- Current Investment Projects -->
   <section class="section section-alt" id="projects">
-    <section class="plans-section">
-        <div class="plans-header">
-            <h2>Current Investment Projects</h2>
-            <p>Explore examples of our clients' ongoing investment journeys. These are anonymized for privacy and illustrate personalized strategies. Results vary based on market conditions.</p>
-        </div>
-        <div class="plans-grid">
-            <div class="plan-card">
-                <h3>Alex Thompson</h3>
-                <ul>
-                    <li><strong>Initial Investment:</strong> $365,000 (across savings, IRA, and brokerage)</li>
-                    <li><strong>Growth % (Estimated Annual):</strong> 5-7% (via diversification to index funds/ETFs)</li>
-                    <li><strong>Plan Type:</strong> Diversification and retirement maximization</li>
-                    <li><strong>Duration/Status:</strong> 2-3 years ongoing; reduced tech concentration from 80% to 40%</li>
-                    <li><strong>Other Details:</strong> Emergency fund built to $36,000; debt payoff prioritized</li>
-                </ul>
-            </div>
-            <div class="plan-card">
-                <h3>Wei and Mei Li</h3>
-                <ul>
-                    <li><strong>Initial Investment:</strong> $1,185,000 (savings, 401(k)s, brokerage)</li>
-                    <li><strong>Growth % (Assumed for College Savings):</strong> 5% annual (projected for 529 plans)</li>
-                    <li><strong>Plan Type:</strong> College funding and early retirement</li>
-                    <li><strong>Duration/Status:</strong> 15 years ongoing; annual contributions of $15,000</li>
-                    <li><strong>Other Details:</strong> Transition to low-cost index funds; estate planning integrated</li>
-                </ul>
-            </div>
-            <div class="plan-card">
-                <h3>Fin-Tech Founder</h3>
-                <ul>
-                    <li><strong>Initial Investment:</strong> $100 million (post-buyout liquidity)</li>
-                    <li><strong>Growth %:</strong> Not specified; focus on asset protection and private investments</li>
-                    <li><strong>Plan Type:</strong> High-net-worth wealth management</li>
-                    <li><strong>Duration/Status:</strong> Ongoing; includes property development and VC fund</li>
-                    <li><strong>Other Details:</strong> Tax savings via philanthropy; insurance solutions</li>
-                </ul>
-            </div>
-            <div class="plan-card">
-                <h3>Emma</h3>
-                <ul>
-                    <li><strong>Initial Investment:</strong> Not quantified; house equity and divorce assets</li>
-                    <li><strong>Growth %:</strong> Not specified; emphasis on retirement security</li>
-                    <li><strong>Plan Type:</strong> Post-divorce financial planning</li>
-                    <li><strong>Duration/Status:</strong> Ongoing; coordinated with insurance and accountant</li>
-                    <li><strong>Other Details:</strong> Avoided house sale; car purchase negotiated</li>
-                </ul>
-            </div>
-            <!-- Add more cards as needed -->
-        </div>
-        <a href="#contact" class="cta-button">Schedule a Consultation</a>
-        <p class="disclaimer">These examples are for illustrative purposes only. Past performance is no guarantee of future results. Consult a professional for personalized advice.</p>
-    </section>
+    <div class="section-title"><h2>Current Investment Projects</h2></div>
+    <div class="plans-header">
+      <p>Explore examples of our clients' ongoing investment journeys. These are anonymized for privacy and illustrate personalized strategies. Results vary based on market conditions.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <h3>Alex Thompson</h3>
+        <ul>
+          <li><strong>Initial Investment:</strong> $365,000 (across savings, IRA, and brokerage)</li>
+          <li><strong>Growth % (Estimated Annual):</strong> 5-7% (via diversification to index funds/ETFs)</li>
+          <li><strong>Plan Type:</strong> Diversification and retirement maximization</li>
+          <li><strong>Duration/Status:</strong> 2-3 years ongoing; reduced tech concentration from 80% to 40%</li>
+          <li><strong>Other Details:</strong> Emergency fund built to $36,000; debt payoff prioritized</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <h3>Wei and Mei Li</h3>
+        <ul>
+          <li><strong>Initial Investment:</strong> $1,185,000 (savings, 401(k)s, brokerage)</li>
+          <li><strong>Growth % (Assumed for College Savings):</strong> 5% annual (projected for 529 plans)</li>
+          <li><strong>Plan Type:</strong> College funding and early retirement</li>
+          <li><strong>Duration/Status:</strong> 15 years ongoing; annual contributions of $15,000</li>
+          <li><strong>Other Details:</strong> Transition to low-cost index funds; estate planning integrated</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <h3>Fin-Tech Founder</h3>
+        <ul>
+          <li><strong>Initial Investment:</strong> $100 million (post-buyout liquidity)</li>
+          <li><strong>Growth %:</strong> Not specified; focus on asset protection and private investments</li>
+          <li><strong>Plan Type:</strong> High-net-worth wealth management</li>
+          <li><strong>Duration/Status:</strong> Ongoing; includes property development and VC fund</li>
+          <li><strong>Other Details:</strong> Tax savings via philanthropy; insurance solutions</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <h3>Emma</h3>
+        <ul>
+          <li><strong>Initial Investment:</strong> Not quantified; house equity and divorce assets</li>
+          <li><strong>Growth %:</strong> Not specified; emphasis on retirement security</li>
+          <li><strong>Plan Type:</strong> Post-divorce financial planning</li>
+          <li><strong>Duration/Status:</strong> Ongoing; coordinated with insurance and accountant</li>
+          <li><strong>Other Details:</strong> Avoided house sale; car purchase negotiated</li>
+        </ul>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+    <a href="#contact" class="cta-button">Schedule a Consultation</a>
+    <p class="disclaimer">These examples are for illustrative purposes only. Past performance is no guarantee of future results. Consult a professional for personalized advice.</p>
   </section>
 
   <!-- Testimonials -->
