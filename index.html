@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,12 +60,16 @@
     .timeline-item:nth-child(even) .timeline-content {float:right;clear:both}
     .timeline-dot {position:absolute;left:50%;top:1rem;width:20px;height:20px;background:var(--teal);border:4px solid #fff;border-radius:50%;transform:translateX(-50%)}
 
-    /* Ongoing Projects (collapsible) */
-    .collapsible {background:var(--teal);color:#fff;cursor:pointer;padding:14px;border:none;text-align:left;width:100%;font-size:1rem;border-radius:8px;margin-bottom:0.5rem}
-    .collapsible:after {content:'▼';float:right}
-    .collapsible.active:after {content:'▲'}
-    .content {max-height:0;overflow:hidden;transition:max-height 0.3s ease;background:#fff;padding:0 1rem;border-radius:0 0 8px 8px;margin-bottom:1rem}
-    .content p {margin:1rem 0}
+    /* Ongoing Projects (card style) */
+    .plans-section { max-width: 1200px; margin: auto; }
+    .plans-header { text-align: center; margin-bottom: 40px; }
+    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .plan-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .plan-card h3 { margin-top: 0; }
+    .plan-card ul { list-style-type: none; padding: 0; }
+    .plan-card li { margin-bottom: 10px; }
+    .cta-button { display: block; text-align: center; margin-top: 20px; padding: 10px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    .disclaimer { font-size: 0.8em; color: #666; text-align: center; margin-top: 40px; }
 
     /* Testimonials */
     .testimonials-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
@@ -81,11 +86,9 @@
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#financial">Financial Services</a></li>
-        <li><a href="#recovery">Asset Recovery</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Ongoing Projects</a></li>
-        <li><a href="#appointment">Book Appointment</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Current Investment Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -113,20 +116,17 @@
     <p>Born in 1982 in Schützenbrunnen, Switzerland, Thomas grew up in a family deeply rooted in banking. He inherited both knowledge and values from his father and grandfather, developing an early passion for finance and investments. Today, Thomas is happily married and father of four beloved children — three daughters and one son. Family values are at the core of his client-first approach.</p>
   </section>
 
-  <!-- Financial Services -->
-  <section class="section" id="financial">
-    <div class="section-title"><h2>Financial Advisory Services</h2></div>
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="section-title"><h2>Services</h2></div>
+    <h3>Financial Advisory Services</h3>
     <div class="services-grid">
       <div class="service-card"><h3>Wealth Management</h3><p>Strategic portfolio allocation, growth, and risk balancing.</p></div>
       <div class="service-card"><h3>Retirement Planning</h3><p>Secure retirement strategies and estate protection.</p></div>
       <div class="service-card"><h3>Investment Advisory</h3><p>Opportunities across traditional and alternative markets.</p></div>
       <div class="service-card"><h3>Risk Management</h3><p>Advanced hedging and financial protection planning.</p></div>
     </div>
-  </section>
-
-  <!-- Asset Recovery -->
-  <section class="section section-alt" id="recovery">
-    <div class="section-title"><h2>Investigation &amp; Asset Recovery</h2></div>
+    <h3>Investigation &amp; Asset Recovery</h3>
     <p>Providing professional investigations for traditional financial scams and crypto fraud recovery, using blockchain forensics, legal coordination, and international tracing strategies.</p>
   </section>
 
@@ -142,18 +142,59 @@
     </div>
   </section>
 
-  <!-- Ongoing Projects -->
+  <!-- Current Investment Projects -->
   <section class="section section-alt" id="projects">
-    <div class="section-title"><h2>Ongoing Projects</h2></div>
-
-    <button class="collapsible">Personal Investor Project • Zurich – Family Wealth Growth</button>
-    <div class="content"><p>Guiding a Swiss family in building a multi-generational investment portfolio, focused on sustainable equities and real estate assets. Current value: ~CHF 3.2M.</p></div>
-
-    <button class="collapsible">Retirement Project • Munich – Pension Optimization</button>
-    <div class="content"><p>Designing a tailored retirement plan for a corporate executive, balancing pension assets with private investment funds. Total portfolio: €950k.</p></div>
-
-    <button class="collapsible">Multi-Investor Project • Europe – Commercial Real Estate Fund</button>
-    <div class="content"><p>Pooling €5.4M from multiple clients to acquire and manage a portfolio of office and retail spaces across major EU cities.</p></div>
+    <section class="plans-section">
+        <div class="plans-header">
+            <h2>Current Investment Projects</h2>
+            <p>Explore examples of our clients' ongoing investment journeys. These are anonymized for privacy and illustrate personalized strategies. Results vary based on market conditions.</p>
+        </div>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3>Alex Thompson</h3>
+                <ul>
+                    <li><strong>Initial Investment:</strong> $365,000 (across savings, IRA, and brokerage)</li>
+                    <li><strong>Growth % (Estimated Annual):</strong> 5-7% (via diversification to index funds/ETFs)</li>
+                    <li><strong>Plan Type:</strong> Diversification and retirement maximization</li>
+                    <li><strong>Duration/Status:</strong> 2-3 years ongoing; reduced tech concentration from 80% to 40%</li>
+                    <li><strong>Other Details:</strong> Emergency fund built to $36,000; debt payoff prioritized</li>
+                </ul>
+            </div>
+            <div class="plan-card">
+                <h3>Wei and Mei Li</h3>
+                <ul>
+                    <li><strong>Initial Investment:</strong> $1,185,000 (savings, 401(k)s, brokerage)</li>
+                    <li><strong>Growth % (Assumed for College Savings):</strong> 5% annual (projected for 529 plans)</li>
+                    <li><strong>Plan Type:</strong> College funding and early retirement</li>
+                    <li><strong>Duration/Status:</strong> 15 years ongoing; annual contributions of $15,000</li>
+                    <li><strong>Other Details:</strong> Transition to low-cost index funds; estate planning integrated</li>
+                </ul>
+            </div>
+            <div class="plan-card">
+                <h3>Fin-Tech Founder</h3>
+                <ul>
+                    <li><strong>Initial Investment:</strong> $100 million (post-buyout liquidity)</li>
+                    <li><strong>Growth %:</strong> Not specified; focus on asset protection and private investments</li>
+                    <li><strong>Plan Type:</strong> High-net-worth wealth management</li>
+                    <li><strong>Duration/Status:</strong> Ongoing; includes property development and VC fund</li>
+                    <li><strong>Other Details:</strong> Tax savings via philanthropy; insurance solutions</li>
+                </ul>
+            </div>
+            <div class="plan-card">
+                <h3>Emma</h3>
+                <ul>
+                    <li><strong>Initial Investment:</strong> Not quantified; house equity and divorce assets</li>
+                    <li><strong>Growth %:</strong> Not specified; emphasis on retirement security</li>
+                    <li><strong>Plan Type:</strong> Post-divorce financial planning</li>
+                    <li><strong>Duration/Status:</strong> Ongoing; coordinated with insurance and accountant</li>
+                    <li><strong>Other Details:</strong> Avoided house sale; car purchase negotiated</li>
+                </ul>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+        <a href="#contact" class="cta-button">Schedule a Consultation</a>
+        <p class="disclaimer">These examples are for illustrative purposes only. Past performance is no guarantee of future results. Consult a professional for personalized advice.</p>
+    </section>
   </section>
 
   <!-- Testimonials -->
@@ -162,12 +203,15 @@
     <div class="testimonials-grid">
       <div class="testimonial-card"><p>“Thomas guided our family through a complex portfolio restructuring during market volatility. His strategic approach preserved our wealth while positioning for long-term growth.”</p><strong>— Private Client, Zurich</strong></div>
       <div class="testimonial-card"><p>“After losing significant funds to a crypto scam, Thomas successfully traced and recovered a substantial portion of our assets.”</p><strong>— Asset Recovery Client, Amsterdam</strong></div>
+      <div class="testimonial-card"><p>“Thomas's expertise in risk management helped us navigate uncertain markets effectively.”</p><strong>— Investor, Geneva</strong></div>
+      <div class="testimonial-card"><p>“Outstanding service in retirement planning; we feel secure about our future.”</p><strong>— Couple, Berlin</strong></div>
+      <div class="testimonial-card"><p>“Recovered lost investments from a fraudulent scheme – highly recommend!”</p><strong>— Client, London</strong></div>
     </div>
   </section>
 
-  <!-- Appointment -->
-  <section class="section section-alt" id="appointment">
-    <div class="section-title"><h2>Book Appointment</h2></div>
+  <!-- Contact -->
+  <section class="section section-alt" id="contact">
+    <div class="section-title"><h2>Contact</h2></div>
     <p style="text-align:center">Schedule a consultation for financial advisory or asset recovery assessment. <br/>Appointments are confidential and tailored to your needs.</p>
   </section>
 
@@ -175,20 +219,6 @@
   <footer>
     <p>&copy; 2025 Thomas Webber - H&amp;W Invest. FINMA &amp; FCA Licensed Financial Advisor. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Collapsible toggle
-    document.querySelectorAll('.collapsible').forEach(button=>{
-      button.addEventListener('click',()=>{
-        button.classList.toggle('active');
-        let content=button.nextElementSibling;
-        if(content.style.maxHeight){
-          content.style.maxHeight=null;
-        } else {
-          content.style.maxHeight=content.scrollHeight+'px';
-        }
-      });
-    });
-  </script>
 </body>
 </html>
+```
