@@ -71,7 +71,7 @@
         <!-- Left: Options & Calculator -->
         <div>
           <h2 class="text-xl font-semibold text-gray-900 mb-3">Arbitrage Contract </h2>
-          <p class="text-sm text-gray-500 mb-4">Select an investment tier and projected return to preview estimated payout. This is a visualize outcomes. <span class="italic">Not financial advice.</span></p>
+          <p class="text-sm text-gray-500 mb-4">Select an investment tier and projected return to preview estimated payout. This is a visualize outcomes. <span class="italic"> financial advice.</span></p>
 
           <!-- Amount Choices -->
           <div class="mb-4">
@@ -344,7 +344,7 @@ Signatures:
 - H&W Invest: ${hwSignatureText}
 - Client: ${clientSignatureText}
 
-Disclaimer: This is a contract. It does  constitute investment advice or an offer to sell securities.
+.
       `;
       const blob = new Blob([contractText], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
