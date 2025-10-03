@@ -47,10 +47,12 @@
     .dark .signature-text { color: #f3f4f6; border-bottom: 1px solid #4b5563; }
     .dark .option-btn { background-color: #374151; color: #f3f4f6; border-color: #4b5563; }
     .dark .option-btn:hover { background-color: #4b5563; }
+    .dark .option-btn[data-rate] { color: #d1d5db; }
     .dark .bg-blue-100 { background-color: #1e40af; }
     .dark .border-blue-600 { border-color: #2563eb; }
     .dark .text-blue-700 { color: #60a5fa; }
     .dark .bg-gray-200 { background-color: #4b5563; }
+    .dark .option-btn.bg-green-100 { background-color: #059669; border-color: #047857; color: #ffffff; }
     @media print {
       body { background: none; }
       .container { background: none; }
@@ -93,7 +95,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Left: Options & Calculator -->
         <div>
-          <h2 class="text-xl font-semibold text-gray-900 mb-3">Arbitrage Contract </h2>
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">Arbitrage Contract</h2>
           <p class="text-sm text-gray-500 mb-4">Please select an investment tier to view the projected payout. The applicable return rate is automatically assigned based on the chosen amount. All figures reflect actual trading conditions and represent legitimate performance expectations. <span class="italic">financial advice.</span></p>
 
           <!-- Amount Choices -->
@@ -223,7 +225,7 @@
               </div>
             </div>
 
-            <p class="mt-4 text-xs text-gray-500"><span class="font-medium">Disclaimer:</span>This is a real, legally binding contract. It does constitute investment advice and may include an offer to sell securities, as applicable.</p>
+            <p class="mt-4 text-xs text-gray-500"><span class="font-medium">Disclaimer:</span> This is a real, legally binding contract. It does constitute investment advice and may include an offer to sell securities, as applicable.</p>
           </div>
         </div>
       </div>
@@ -320,9 +322,9 @@
       };
       selectedRate = rateMap[amount] || 0.50;
       document.querySelectorAll('.option-btn[data-rate]').forEach(btn => {
-        btn.classList.remove('bg-green-100', 'border-green-600', 'dark:bg-blue-100', 'dark:border-blue-600');
+        btn.classList.remove('bg-green-100', 'border-green-600', 'dark:bg-green-600', 'dark:border-green-700', 'dark:text-white');
         if (parseFloat(btn.dataset.rate) === selectedRate) {
-          btn.classList.add('bg-green-100', 'border-green-600', 'dark:bg-blue-100', 'dark:border-blue-600');
+          btn.classList.add('bg-green-100', 'border-green-600', 'dark:bg-green-600', 'dark:border-green-700', 'dark:text-white');
         }
       });
       updateCalc();
@@ -371,7 +373,7 @@ Date: October 03, 2025
 Prepared for: Sharam Abouali
 Provider: H&W Investments Ltd
 Address: Your address
-Client ID: XXXXXXX
+Client ID: 287808
 Country: Denmark
 
 Investment Details:
