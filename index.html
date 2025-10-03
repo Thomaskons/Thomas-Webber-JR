@@ -1,276 +1,367 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thomas Webber | FINMA & FCA Licensed Financial Advisor & Asset Recovery Professional</title>
-  <meta name="description" content="Thomas Webber - FINMA & FCA Licensed Financial Advisor and Investigator & Asset Recovery Professional. Independent advisory services with H&W Invest since 2019.">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>H&W Invest — Ethereum Arbitrage Contract</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for handwritten signature -->
+  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
   <style>
-    /* ---------- Modern Financial Palette ---------- */
-    :root {
-      --primary:#0B3158;
-      --teal:#0FA58A;
-      --soft-teal:#7FD3C7;
-      --gold:#F5C45E;
-      --bg-light:#F6FBFB;
-      --white:#fff;
-      --shadow:rgba(11,49,88,0.12);
-      --gradient-primary:linear-gradient(135deg,#0B3158 0%,#0FA58A 100%);
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1620325867502-2216c5f8a7e8');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
-    body {font-family:sans-serif;margin:0;color:var(--primary);background:var(--bg-light)}
-    header {position:fixed;top:0;left:0;right:0;background:#fff;padding:1rem 2rem;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
-    nav {display:flex;justify-content:space-between;align-items:center}
-    .logo {font-weight:700;font-size:1.4rem;background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .nav-links {list-style:none;display:flex;gap:1.2rem;margin:0;padding:0}
-    .nav-links a {text-decoration:none;color:var(--primary);font-weight:600}
-    .nav-links a:hover {color:var(--teal)}
-
-    /* Hero */
-    .hero {min-height:90vh;display:flex;align-items:center;justify-content:center;background:
-      linear-gradient(180deg,rgba(11,49,88,0.3),rgba(15,165,138,0.2)),
-      url('https://imgpx.com/cdfzbdHjM7Jq.jpg');background-size:cover;background-position:center;
-      padding:6rem 2rem}
-    .hero-content {display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem;max-width:1200px}
-    .hero h1 {font-size:3rem;color:#fff;margin:0}
-    .hero .tagline {display:block;color:#fff;font-weight:600}
-    .hero .hero-bio {background:rgba(255,255,255,0.9);padding:1rem;border-radius:10px;margin:1rem 0}
-
-    /* Portrait rectangular with frame */
-    .hero-portrait {width:100%;max-width:380px;border-radius:12px;overflow:hidden;
-      box-shadow:0 12px 30px rgba(11,49,88,0.25);border:6px solid #fff;margin:auto}
-    .hero-portrait img {width:100%;height:auto;display:block;object-fit:cover}
-
-    /* Sections */
-    .section {padding:5rem 2rem;max-width:1200px;margin:auto}
-    .section-alt {background:var(--bg-light)}
-    .section-title {text-align:center;margin-bottom:2rem}
-    .section-title h2 {font-size:2rem;color:var(--primary)}
-
-    .services-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-    .service-card {background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 6px 20px var(--shadow)}
-    .service-card h3 {margin-top:0;color:var(--teal)}
-
-    /* Timeline */
-    .timeline {position:relative;margin:2rem auto;max-width:800px}
-    .timeline:before {content:'';position:absolute;left:50%;top:0;bottom:0;width:4px;background:var(--teal);transform:translateX(-50%)}
-    .timeline-item {position:relative;margin:2rem 0}
-    .timeline-item .timeline-content {background:#fff;padding:1rem;border-radius:8px;box-shadow:0 6px 20px var(--shadow);width:45%}
-    .timeline-item:nth-child(odd) .timeline-content {float:left;clear:both}
-    .timeline-item:nth-child(even) .timeline-content {float:right;clear:both}
-    .timeline-dot {position:absolute;left:50%;top:1rem;width:20px;height:20px;background:var(--teal);border:4px solid #fff;border-radius:50%;transform:translateX(-50%)}
-    .timeline::after { content: ""; display: table; clear: both; } /* Clearfix to prevent overlap */
-
-    /* Current Investment Projects (enhanced modern card style) */
-    .plans-header { text-align: center; margin-bottom: 40px; }
-    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .plan-card { background:#fff; padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .plan-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px var(--shadow); }
-    .plan-card h3 { margin-top: 0; color: var(--teal); font-size: 1.2rem; }
-    .plan-card ul { list-style-type: disc; padding-left: 20px; margin: 0; }
-    .plan-card ul li { margin-bottom: 8px; font-size: 0.95rem; }
-    .plan-card ul li strong { color: var(--primary); }
-    .plan-card ul ul { list-style-type: circle; padding-left: 20px; }
-    .cta-button { display: block; text-align: center; margin-top: 20px; padding: 10px; background: var(--gradient-primary); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; }
-    .cta-button:hover { opacity: 0.9; }
-    .disclaimer { font-size: 0.8em; color: #666; text-align: center; margin-top: 40px; }
-
-    /* Testimonials */
-    .testimonials-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-    .testimonial-card {background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 6px 20px var(--shadow)}
-
-    footer {background:#071a29;color:#eee;padding:2rem;text-align:center;margin-top:3rem}
+    .container { background-color: rgba(249, 250, 251, 0.8); }
+    .card-contract { background-color: rgba(255, 255, 255, 0.95); }
+    .option-btn { transition: all 0.2s ease; }
+    .option-btn:hover { transform: translateY(-2px); }
+    .signature-line { border-top: 1px solid #e5e7eb; }
+    .eth-badge { transition: transform 0.2s ease; }
+    .eth-badge:hover { transform: scale(1.1); }
+    .logo-box { background: linear-gradient(135deg, #ffffff, #f1f5f9); }
+    .signature-text { 
+      font-family: 'Cedarville Cursive', cursive; 
+      font-size: 1.5rem; 
+      color: #1f2937; 
+      border-bottom: 1px solid #e5e7eb; 
+      padding-bottom: 4px; 
+      min-height: 40px; 
+    }
+    @media print {
+      body { background: none; }
+      .container { background: none; }
+      .card-contract { background: #fff; box-shadow: none; }
+      .option-btn, #startBtn, #pdfBtn, #signHW, #signClient, #clearHW, #clearClient,
+      #hwFirstName, #hwLastName, #clientFirstName, #clientLastName, .notes-section {
+        display: none;
+      }
+      .signature-text { font-size: 1.2rem; }
+      .signature-line { padding-top: 1rem; }
+    }
   </style>
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <nav>
-      <div class="logo">Thomas Webber</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Current Investment Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div>
-        <h1>Thomas Webber</h1>
-        <span class="tagline">FINMA &amp; FCA Licensed Financial Advisor</span>
-        <span class="tagline">Investigator &amp; Asset Recovery Professional</span>
-        <div class="hero-bio">
-          <p>Born into a Swiss banking family in 1982, Thomas combines generational financial wisdom with modern expertise. After successful careers at Credit Suisse, ING, UBS, and Allianz, he now advises clients through H&amp;W Invest, blending professionalism with family-driven values.</p>
+<body class="text-gray-900">
+  <div class="container max-w-6xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-8">
+      <div class="flex items-center gap-4">
+        <div class="w-24 h-24 flex items-center justify-center bg-white rounded-xl shadow-sm p-4 logo-box">
+          <img src="https://hw-invest.pro/wp-content/uploads/2025/05/HW-Invest-Logo-light.png" alt="H&W Invest" class="max-w-[80%] max-h-[80%]">
+        </div>
+        <div>
+          <h1 class="text-2xl font-semibold text-gray-900">H&W Invest</h1>
+          <p class="text-sm text-gray-500">Ethereum Arbitrage Contract</p>
         </div>
       </div>
-      <div class="hero-portrait">
-        <img src="https://imgpx.com/gdl2mvYjUK3Z.png" alt="Thomas Webber Portrait">
+      <div class="text-right">
+        <img src="https://www.citypng.com/public/uploads/preview/hd-ethereum-eth-dark-logo-transparent-png-701751694771776u3bsi1hqxx.png" alt="ETH" class="eth-badge w-14 h-14 object-contain">
+        <p class="text-sm text-gray-500">Prepared for <span class="font-medium">Sharam Abouali</span></p>
       </div>
     </div>
-  </section>
 
-  <!-- About -->
-  <section class="section section-alt" id="about">
-    <div class="section-title"><h2>About Thomas Webber</h2></div>
-    <p>Born in 1982 in Schützenbrunnen, Switzerland, Thomas grew up in a family deeply rooted in banking. He inherited both knowledge and values from his father and grandfather, developing an early passion for finance and investments. Today, Thomas is happily married and father of four beloved children — three daughters and one son. Family values are at the core of his client-first approach.</p>
-  </section>
+    <!-- Main Card -->
+    <div class="card-contract rounded-2xl shadow-md p-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Options & Calculator -->
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">Arbitrage Contract Simulation</h2>
+          <p class="text-sm text-gray-500 mb-4">Select an investment tier and projected return to preview estimated payout. This is a simulation to visualize outcomes. <span class="italic">Not financial advice.</span></p>
 
-  <!-- Services -->
-  <section class="section" id="services">
-    <div class="section-title"><h2>Services</h2></div>
-    <h3>Financial Advisory Services</h3>
-    <div class="services-grid">
-      <div class="service-card"><h3>Wealth Management</h3><p>Strategic portfolio allocation, growth, and risk balancing.</p></div>
-      <div class="service-card"><h3>Retirement Planning</h3><p>Secure retirement strategies and estate protection.</p></div>
-      <div class="service-card"><h3>Investment Advisory</h3><p>Opportunities across traditional and alternative markets.</p></div>
-      <div class="service-card"><h3>Risk Management</h3><p>Advanced hedging and financial protection planning.</p></div>
-    </div>
-    <h3>Investigation &amp; Asset Recovery</h3>
-    <p>Providing professional investigations for traditional financial scams and crypto fraud recovery, using blockchain forensics, legal coordination, and international tracing strategies.</p>
-  </section>
+          <!-- Amount Choices -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Investment Amount</label>
+            <div class="flex flex-wrap gap-2">
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="5000">USD 5,000</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="10000">USD 10,000</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="30000">USD 30,000</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="50000">USD 50,000</button>
+            </div>
+          </div>
 
-  <!-- Experience Timeline -->
-  <section class="section" id="experience">
-    <div class="section-title"><h2>Experience Timeline</h2></div>
-    <div class="timeline">
-      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>2019–Present: Senior Financial Advisor</h4><p>H&amp;W Invest, Europe</p></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>2015–2019: Portfolio Strategy Manager</h4><p>Allianz Global Investors, Europe</p></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>2012–2015: Senior Investment Consultant</h4><p>UBS Wealth Management, Switzerland</p></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>2009–2012: Investment Advisor</h4><p>ING Group, Netherlands</p></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>2005–2009: Wealth Management Associate</h4><p>Credit Suisse, Switzerland</p></div></div>
-    </div>
-  </section>
+          <!-- Rate Choices -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Projected Return Rate</label>
+            <div class="flex flex-wrap gap-2">
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.50">50%</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.55">55%</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.60">60%</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.65">65%</button>
+            </div>
+            <p class="text-xs text-gray-500 mt-1">Rates are illustrative. Actual returns vary; H&W minimizes risk but does not eliminate it.</p>
+          </div>
 
-  <!-- Current Investment Projects -->
-  <section class="section section-alt" id="projects">
-    <div class="section-title"><h2>Current Investment Projects</h2></div>
-    <div class="plans-header">
-      <p>Explore examples of our clients’ ongoing investment journeys. All names are anonymized for confidentiality, and results vary depending on market conditions.</p>
-    </div>
-    <div class="plans-grid">
-      <div class="plan-card">
-        <h3>Client: Alex Th*n</h3>
-        <ul>
-          <li>Initial Investment: $365,000 (across savings, IRA, and brokerage accounts)</li>
-          <li>Estimated Annual Growth: 5–7%</li>
-          <li>Portfolio Allocation:
-            <ul>
-              <li>Stocks: Apple (AAPL), Microsoft (MSFT), Johnson & Johnson (JNJ) – 40%</li>
-              <li>ETFs: S&P 500 ETF (SPY), Total Market ETF (VTI) – 35%</li>
-              <li>Bonds: US Treasury & corporate bonds – 20%</li>
-              <li>Commodities: Gold ETF (GLD) – 5%</li>
+          <!-- Calculator Result -->
+          <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <div class="flex justify-between">
+              <div>
+                <p class="text-xs text-gray-500">Selected</p>
+                <p class="text-sm font-medium"><span id="selAmount">USD 5,000</span> at <span id="selRate" class="font-bold text-green-600">50%</span></p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-gray-500">Projected Gross</p>
+                <p id="gross" class="text-lg font-bold text-gray-900">USD 7,500.00</p>
+              </div>
+            </div>
+            <hr class="my-3 border-gray-200">
+            <div class="flex justify-between">
+              <div>
+                <p class="text-xs text-gray-500">Fee / Platform (example)</p>
+                <p id="fee" class="text-sm">2.0% (example)</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-gray-500">Projected Net Payout</p>
+                <p id="net" class="text-lg font-bold text-green-600">USD 7,350.00</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Area -->
+          <div class="flex gap-3">
+            <button id="startBtn" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg text-sm font-medium hover:from-blue-700 hover:to-blue-800">Proceed: Prepare Transfer</button>
+            <button id="pdfBtn" class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100">Download Contract (PDF)</button>
+          </div>
+
+          <!-- Notes -->
+          <div class="mt-4 text-xs text-gray-500 notes-section">
+            <ul class="list-disc pl-4">
+              <li>Estimated numbers are for demonstration only.</li>
+              <li>Actual execution depends on market conditions, gas costs, and banking operations.</li>
+              <li>We provide hands-on bank transfer assistance for clients.</li>
             </ul>
-          </li>
-          <li>Strategy: Retirement-focused diversification and risk reduction</li>
-          <li>Progress: 2–3 years ongoing; reduced tech exposure from 80% to 40%</li>
-          <li>Additional Achievements: Built a $36,000 emergency fund and prioritized debt reduction</li>
-        </ul>
-      </div>
-      <div class="plan-card">
-        <h3>Client: Sarah M*r</h3>
-        <ul>
-          <li>Initial Investment: $135,000 (savings and mutual funds)</li>
-          <li>Estimated Annual Growth: 4–6%</li>
-          <li>Portfolio Allocation:
-            <ul>
-              <li>Stocks: Coca-Cola (KO), Procter & Gamble (PG) – 25%</li>
-              <li>Indices: MSCI World ETF – 30%</li>
-              <li>Bonds: Investment-grade corporate bonds – 30%</li>
-              <li>Commodities: Silver ETF (SLV) – 10%</li>
-              <li>Cash/Short-term: 5%</li>
-            </ul>
-          </li>
-          <li>Strategy: Moderate-risk growth with emergency fund planning</li>
-          <li>Progress: 18 months ongoing; increased bond allocation from 20% to 35%</li>
-          <li>Additional Achievements: Created a $12,000 emergency reserve</li>
-        </ul>
-      </div>
-      <div class="plan-card">
-        <h3>Client: James L*y</h3>
-        <ul>
-          <li>Initial Investment: $14,000 (small brokerage account)</li>
-          <li>Estimated Annual Growth: 6–8%</li>
-          <li>Portfolio Allocation:
-            <ul>
-              <li>Stocks: Tesla (TSLA), Nvidia (NVDA), Alphabet (GOOGL) – 50%</li>
-              <li>ETFs: Nasdaq 100 ETF (QQQ) – 30%</li>
-              <li>Commodities: Bitcoin (BTC) & Gold ETF (GLD) – 10%</li>
-              <li>Cash: 10%</li>
-            </ul>
-          </li>
-          <li>Strategy: Early-stage growth with high-growth tech focus</li>
-          <li>Progress: 1 year ongoing; diversified holdings across 10 sectors</li>
-          <li>Additional Achievements: Opened a Roth IRA and set up recurring investments</li>
-        </ul>
-      </div>
-      <div class="plan-card">
-        <h3>Client: Maria K*n</h3>
-        <ul>
-          <li>Initial Investment: $36,000 (savings and retirement accounts)</li>
-          <li>Estimated Annual Growth: 5–7%</li>
-          <li>Portfolio Allocation:
-            <ul>
-              <li>Stocks: Johnson & Johnson (JNJ), PepsiCo (PEP) – 20%</li>
-              <li>Indices: S&P 500 ETF (SPY), MSCI Emerging Markets ETF (EEM) – 40%</li>
-              <li>Bonds: Municipal & corporate bonds – 30%</li>
-              <li>Commodities: Gold ETF (GLD) – 10%</li>
-            </ul>
-          </li>
-          <li>Strategy: Retirement-focused diversification with international exposure</li>
-          <li>Progress: 2 years ongoing; increased international exposure from 10% to 25%</li>
-          <li>Additional Achievements: Established $5,000 emergency fund and reduced high-interest debt</li>
-        </ul>
-      </div>
-      <div class="plan-card">
-        <h3>Group Investment Project 4 Participants</h3>
-        <ul>
-          <li>Total Investment: $1,450,000 (multiple accounts including brokerage, IRA, and trust funds)</li>
-          <li>Estimated Annual Growth: 4–6%</li>
-          <li>Portfolio Allocation:
-            <ul>
-              <li>Stocks: Berkshire Hathaway (BRK.B), Apple (AAPL), Microsoft (MSFT) – 30%</li>
-              <li>ETFs: S&P 500 ETF (SPY), Nasdaq 100 ETF (QQQ) – 20%</li>
-              <li>Indices: MSCI World ETF, MSCI Emerging Markets ETF – 15%</li>
-              <li>Bonds: US Treasury, corporate bonds, municipal bonds – 25%</li>
-              <li>Commodities: Gold (GLD), Oil ETF (USO) – 5%</li>
-              <li>Cash/Short-term instruments: 5%</li>
-            </ul>
-          </li>
-          <li>Strategy: Wealth preservation, tax efficiency, and estate planning</li>
-          <li>Progress: 3–4 years ongoing; annual rebalancing for growth and tax optimization</li>
-          <li>Additional Achievements: Funded $200,000 emergency reserve and implemented estate strategies</li>
-        </ul>
+          </div>
+        </div>
+
+        <!-- Right: Contract & Terms -->
+        <div>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Contract Summary</h3>
+
+            <p class="text-xs text-gray-500 mb-2">Agreement between</p>
+            <div class="mb-3">
+              <p class="font-medium">H&W Invest</p>
+              <p class="text-sm text-gray-600">Provider: H&W Investments Ltd<br>Address: Your address</p>
+            </div>
+
+            <p class="text-xs text-gray-500 mb-2">Client</p>
+            <div class="mb-3">
+              <p class="font-medium">Sharam Abouali</p>
+              <p class="text-sm text-gray-600">Country: Great Britain<br>Client ID: XXXXXXX</p>
+            </div>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Terms (Summary)</h4>
+            <ol class="text-xs text-gray-600 list-decimal pl-4">
+              <li>Investment Amount: <span id="termAmount">USD 5,000</span></li>
+              <li>Projected Return Rate: <span id="termRate">50%</span></li>
+              <li>Gross Payout = Principal × (1 + Rate)</li>
+              <li>Fees: Platform & management fee (example shown in calculator).</li>
+              <li>Withdrawal: Subject to platform liquidity; typical settlement 24–72 hours.</li>
+              <li>Risk: All trading carries risk; past performance is not a guarantee.</li>
+            </ol>
+
+            <div class="mt-4 notes-section">
+              <label class="block text-xs font-medium text-gray-700 mb-2">Additional Notes</label>
+              <textarea id="notes" class="w-full border border-gray-300 rounded-lg p-2 text-sm" rows="3">I confirm I understand the terms and authorize H&W Invest to execute the strategy.</textarea>
+            </div>
+
+            <div class="signature-line mt-4 pt-4">
+              <div class="flex justify-between gap-4">
+                <div class="text-center w-1/2">
+                  <p class="text-xs text-gray-500">For H&W Invest</p>
+                  <div class="mt-2">
+                    <input id="hwFirstName" type="text" placeholder="First Name" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2">
+                    <input id="hwLastName" type="text" placeholder="Last Name" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2">
+                    <div class="flex gap-2 justify-center">
+                      <button id="signHW" class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs hover:bg-blue-200">Sign</button>
+                      <button id="clearHW" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-lg text-xs hover:bg-gray-300">Clear</button>
+                    </div>
+                    <div id="hwSignature" class="signature-text mt-2"></div>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-2">Authorized Signatory</p>
+                </div>
+                <div class="text-center w-1/2">
+                  <p class="text-xs text-gray-500">Client</p>
+                  <div class="mt-2">
+                    <input id="clientFirstName" type="text" placeholder="First Name" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2">
+                    <input id="clientLastName" type="text" placeholder="Last Name" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2">
+                    <div class="flex gap-2 justify-center">
+                      <button id="signClient" class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs hover:bg-blue-200">Sign</button>
+                      <button id="clearClient" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-lg text-xs hover:bg-gray-300">Clear</button>
+                    </div>
+                    <div id="clientSignature" class="signature-text mt-2"></div>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-2">Sharam Abouali</p>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-4 text-xs text-gray-500"><span class="font-medium">Disclaimer:</span> This is an illustrative contract template and simulation only. It does not constitute investment advice or an offer to sell securities.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <a href="#contact" class="cta-button">Schedule a Consultation</a>
-    <p class="disclaimer"></p>
-  </section>
 
-  <!-- Testimonials -->
-  <section class="section" id="testimonials">
-    <div class="section-title"><h2>Client Success Stories</h2></div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card"><p>“Thomas guided our family through a complex portfolio restructuring during market volatility. His strategic approach preserved our wealth while positioning for long-term growth.”</p><strong>— Private Client, Zurich</strong></div>
-      <div class="testimonial-card"><p>“After losing significant funds to a crypto scam, Thomas successfully traced and recovered a substantial portion of our assets.”</p><strong>— Asset Recovery Client, Amsterdam</strong></div>
-      <div class="testimonial-card"><p>“Thomas's expertise in risk management helped us navigate uncertain markets effectively.”</p><strong>— Investor, Geneva</strong></div>
-      <div class="testimonial-card"><p>“Outstanding service in retirement planning; we feel secure about our future.”</p><strong>— Couple, Berlin</strong></div>
-      <div class="testimonial-card"><p>“Recovered lost investments from a fraudulent scheme – highly recommend!”</p><strong>— Client, London</strong></div>
-    </div>
-  </section>
+    <footer class="mt-8 text-center text-xs text-gray-500">
+      <p>H&W Investments Ltd — Simulated Contract Template for Sharam Abouali</p>
+    </footer>
+  </div>
 
-  <!-- Contact -->
-  <section class="section section-alt" id="contact">
-    <div class="section-title"><h2>Contact</h2></div>
-    <p style="text-align:center">Address: H&W Invest LLC, Bahnhofstrasse 37, 378001 Zürich, Switzerland <br/>WhatsApp: +44 7520 657317 | Email: thomas.webber@hw-invest.pro</p>
-  </section>
+  <script>
+    // Default selected values
+    let selectedAmount = 5000;
+    let selectedRate = 0.50;
+    const feePct = 0.02;
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Thomas Webber - H&amp;W Invest. FINMA &amp; FCA Licensed Financial Advisor. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    // DOM references
+    const selAmountEl = document.getElementById('selAmount');
+    const selRateEl = document.getElementById('selRate');
+    const grossEl = document.getElementById('gross');
+    const netEl = document.getElementById('net');
+    const feeEl = document.getElementById('fee');
+    const termAmount = document.getElementById('termAmount');
+    const termRate = document.getElementById('termRate');
+
+    // Signature DOM references
+    const hwFirstName = document.getElementById('hwFirstName');
+    const hwLastName = document.getElementById('hwLastName');
+    const hwSignature = document.getElementById('hwSignature');
+    const clientFirstName = document.getElementById('clientFirstName');
+    const clientLastName = document.getElementById('clientLastName');
+    const clientSignature = document.getElementById('clientSignature');
+
+    function isSignatureEmpty(firstName, lastName, signatureEl) {
+      return !firstName.value.trim() || !lastName.value.trim() || !signatureEl.textContent.trim();
+    }
+
+    // Sign buttons
+    document.getElementById('signHW').addEventListener('click', () => {
+      const fullName = `${hwFirstName.value.trim()} ${hwLastName.value.trim()}`.trim();
+      if (hwFirstName.value.trim() && hwLastName.value.trim()) {
+        hwSignature.textContent = fullName;
+      } else {
+        alert('Please enter both first and last names for H&W Invest.');
+      }
+    });
+
+    document.getElementById('signClient').addEventListener('click', () => {
+      const fullName = `${clientFirstName.value.trim()} ${clientLastName.value.trim()}`.trim();
+      if (clientFirstName.value.trim() && clientLastName.value.trim()) {
+        clientSignature.textContent = fullName;
+      } else {
+        alert('Please enter both first and last names for the client.');
+      }
+    });
+
+    // Clear buttons
+    document.getElementById('clearHW').addEventListener('click', () => {
+      hwFirstName.value = '';
+      hwLastName.value = '';
+      hwSignature.textContent = '';
+    });
+
+    document.getElementById('clearClient').addEventListener('click', () => {
+      clientFirstName.value = '';
+      clientLastName.value = '';
+      clientSignature.textContent = '';
+    });
+
+    function formatUSD(v) {
+      return 'USD ' + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function updateCalc() {
+      const gross = selectedAmount * (1 + selectedRate);
+      const fee = gross * feePct;
+      const net = gross - fee;
+      selAmountEl.textContent = formatUSD(selectedAmount);
+      selRateEl.textContent = (selectedRate * 100).toFixed(0) + '%';
+      grossEl.textContent = formatUSD(gross);
+      feeEl.textContent = (feePct * 100).toFixed(2) + '% (' + formatUSD(fee) + ')';
+      netEl.textContent = formatUSD(net);
+      termAmount.textContent = formatUSD(selectedAmount);
+      termRate.textContent = (selectedRate * 100).toFixed(0) + '%';
+    }
+
+    // Attach button handlers
+    document.querySelectorAll('.option-btn[data-amount]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedAmount = Number(btn.dataset.amount);
+        document.querySelectorAll('.option-btn[data-amount]').forEach(b => b.classList.remove('bg-blue-100', 'border-blue-600'));
+        btn.classList.add('bg-blue-100', 'border-blue-600');
+        updateCalc();
+      });
+    });
+
+    document.querySelectorAll('.option-btn[data-rate]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedRate = Number(btn.dataset.rate);
+        document.querySelectorAll('.option-btn[data-rate]').forEach(b => b.classList.remove('bg-green-100', 'border-green-600'));
+        btn.classList.add('bg-green-100', 'border-green-600');
+        updateCalc();
+      });
+    });
+
+    // Default active states
+    document.querySelector('.option-btn[data-amount="5000"]').classList.add('bg-blue-100', 'border-blue-600');
+    document.querySelector('.option-btn[data-rate="0.50"]').classList.add('bg-green-100', 'border-green-600');
+    updateCalc();
+
+    // Proceed: Prepare Transfer
+    document.getElementById('startBtn').addEventListener('click', () => {
+      if (isSignatureEmpty(hwFirstName, hwLastName, hwSignature) || isSignatureEmpty(clientFirstName, clientLastName, clientSignature)) {
+        alert('Please provide both H&W Invest and client signatures by entering names and clicking "Sign".');
+        return;
+      }
+      const notes = document.getElementById('notes').value;
+      const hwSignatureText = hwSignature.textContent;
+      const clientSignatureText = clientSignature.textContent;
+      const contractText = `
+H&W Invest Ethereum Arbitrage Contract
+--------------------------------------
+Date: October 03, 2025
+Prepared for: Sharam Abouali
+Provider: H&W Investments Ltd
+Address: Your address
+Client ID: XXXXXXX
+Country: Great Britain
+
+Investment Details:
+- Investment Amount: ${formatUSD(selectedAmount)}
+- Projected Return Rate: ${(selectedRate * 100).toFixed(0)}%
+- Projected Gross Payout: ${formatUSD(selectedAmount * (1 + selectedRate))}
+- Platform Fee (example): ${(feePct * 100).toFixed(2)}% (${formatUSD(selectedAmount * (1 + selectedRate) * feePct)})
+- Projected Net Payout: ${formatUSD(selectedAmount * (1 + selectedRate) * (1 - feePct))}
+
+Notes:
+${notes}
+
+Signatures:
+- H&W Invest: ${hwSignatureText}
+- Client: ${clientSignatureText}
+
+Disclaimer: This is an illustrative contract template and simulation only. It does not constitute investment advice or an offer to sell securities.
+      `;
+      const blob = new Blob([contractText], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'contract_summary.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+      alert(`Contract summary downloaded. You will be guided for the bank transfer.`);
+    });
+
+    // Download Contract (PDF)
+    document.getElementById('pdfBtn').addEventListener('click', () => {
+      if (isSignatureEmpty(hwFirstName, hwLastName, hwSignature) || isSignatureEmpty(clientFirstName, clientLastName, clientSignature)) {
+        alert('Please provide both H&W Invest and client signatures before downloading the contract.');
+        return;
+      }
+      window.print();
+    });
+  </script>
