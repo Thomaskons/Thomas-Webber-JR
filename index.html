@@ -16,15 +16,15 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    .container { background-color: rgba(249, 250, 251, 0.8); }
-    .card-contract { background-color: rgba(255, 255, 255, 0.95); }
-    .option-btn { transition: all 0.2s ease; }
-    .option-btn:hover { transform: translateY(-2px); }
+    .container { background-color: rgba(249, 250, 251, 0.8); transition: background-color 0.3s ease; }
+    .card-contract { background-color: rgba(255, 255, 255, 0.95); transition: background-color 0.3s ease; }
     .signature-line { border-top: 1px solid #e5e7eb; }
-    .eth-badge { transition: transform 0.2s ease; }
-    .eth-badge:hover { transform: scale(1.1); }
-    .logo-box { background: linear-gradient(135deg, #ffffff, #f1f5f9); }
+    .eth-badge, .hw-badge { transition: transform 0.2s ease; }
+    .eth-badge:hover, .hw-badge:hover { transform: scale(1.1); }
+    .logo-box { background: #1f2937; }
+    .dark .logo-box { background: #111827; }
     .signature-text { 
       font-family: 'Cedarville Cursive', cursive; 
       font-size: 1.5rem; 
@@ -32,36 +32,59 @@
       border-bottom: 1px solid #e5e7eb; 
       padding-bottom: 4px; 
       min-height: 40px; 
+      transition: color 0.3s ease, border-color 0.3s ease;
     }
+    .dark .container { background-color: rgba(17, 24, 39, 0.8); }
+    .dark .card-contract { background-color: rgba(31, 41, 55, 0.95); }
+    .dark .text-gray-900 { color: #f3f4f6; }
+    .dark .text-gray-700 { color: #d1d5db; }
+    .dark .text-gray-600 { color: #9ca3af; }
+    .dark .text-gray-500 { color: #6b7280; }
+    .dark .text-green-600 { color: #34d399; }
+    .dark .bg-white { background-color: #1f2937; }
+    .dark .bg-gray-50 { background-color: #374151; }
+    .dark .border-gray-300 { border-color: #4b5563; }
+    .dark .signature-text { color: #f3f4f6; border-bottom: 1px solid #4b5563; }
+    .dark .option-btn { background-color: #374151; color: #f3f4f6; border-color: #4b5563; }
+    .dark .option-btn:hover { background-color: #4b5563; }
+    .dark .bg-blue-100 { background-color: #1e40af; }
+    .dark .border-blue-600 { border-color: #2563eb; }
+    .dark .text-blue-700 { color: #60a5fa; }
+    .dark .bg-gray-200 { background-color: #4b5563; }
     @media print {
       body { background: none; }
       .container { background: none; }
       .card-contract { background: #fff; box-shadow: none; }
       .option-btn, #startBtn, #pdfBtn, #signHW, #signClient, #clearHW, #clearClient,
-      #hwFirstName, #hwLastName, #clientFirstName, #clientLastName, .notes-section {
-        display: none;
-      }
+      #hwFirstName, #hwLastName, #clientFirstName, #clientLastName, .notes-section,
+      #toggleMode { display: none; }
       .signature-text { font-size: 1.2rem; }
       .signature-line { padding-top: 1rem; }
+      .logo-box { background: #fff; }
     }
   </style>
 </head>
-<body class="text-gray-900">
+<body class="text-gray-900 dark" onload="loadTheme()">
   <div class="container max-w-6xl mx-auto px-4 py-8">
     <!-- Header -->
     <div class="flex justify-between items-center mb-8">
       <div class="flex items-center gap-4">
-        <div class="w-24 h-24 flex items-center justify-center bg-white rounded-xl shadow-sm p-4 logo-box">
-          <img src="https://hw-invest.pro/wp-content/uploads/2025/05/HW-Invest-Logo-light.png" alt="H&W Invest" class="max-w-[80%] max-h-[80%]">
+        <div class="w-16 h-16 flex items-center justify-center rounded-xl shadow-sm p-3 logo-box">
+          <img src="https://hw-invest.pro/wp-content/uploads/2025/05/HW-Invest-Logo-light.png" alt="H&W Invest" class="hw-badge max-w-full max-h-full">
         </div>
         <div>
           <h1 class="text-2xl font-semibold text-gray-900">H&W Invest</h1>
           <p class="text-sm text-gray-500">Ethereum Arbitrage Contract</p>
         </div>
       </div>
-      <div class="text-right">
-        <img src="https://www.citypng.com/public/uploads/preview/hd-ethereum-eth-dark-logo-transparent-png-701751694771776u3bsi1hqxx.png" alt="ETH" class="eth-badge w-14 h-14 object-contain">
-        <p class="text-sm text-gray-500">Prepared for <span class="font-medium">Sharam Abouali</span></p>
+      <div class="flex items-center gap-4">
+        <button id="toggleMode" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg text-xs hover:bg-gray-300 dark:hover:bg-gray-600">Switch to Day Mode</button>
+        <div class="text-right flex items-center gap-4">
+          <div class="w-16 h-16 flex items-center justify-center rounded-xl shadow-sm p-3 logo-box">
+            <img src="https://www.citypng.com/public/uploads/preview/hd-ethereum-eth-dark-logo-transparent-png-701751694771776u3bsi1hqxx.png" alt="ETH" class="eth-badge max-w-full max-h-full">
+          </div>
+          <p class="text-sm text-gray-500">Prepared for <span class="font-medium">Sharam Abouali</span></p>
+        </div>
       </div>
     </div>
 
@@ -70,30 +93,30 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Left: Options & Calculator -->
         <div>
-          <h2 class="text-xl font-semibold text-gray-900 mb-3">Arbitrage Contract </h2>
-          <p class="text-sm text-gray-500 mb-4">Select an investment tier and projected return to preview estimated payout. This is a visualize outcomes. <span class="italic"> financial advice.</span></p>
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">Arbitrage Contract Simulation</h2>
+          <p class="text-sm text-gray-500 mb-4">Select an investment tier to preview estimated payout. Return rate is automatically set based on amount. This is a simulation to visualize outcomes. <span class="italic">Not financial advice.</span></p>
 
           <!-- Amount Choices -->
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-2">Investment Amount</label>
             <div class="flex flex-wrap gap-2">
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="5000">USD 5,000</button>
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="10000">USD 10,000</button>
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="30000">USD 30,000</button>
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-600" data-amount="50000">USD 50,000</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-amount="5000">USD 5,000</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-amount="10000">USD 10,000</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-amount="30000">USD 30,000</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-amount="50000">USD 50,000</button>
             </div>
           </div>
 
-          <!-- Rate Choices -->
+          <!-- Rate Display -->
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-2">Projected Return Rate</label>
             <div class="flex flex-wrap gap-2">
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.50">50%</button>
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.55">55%</button>
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.60">60%</button>
-              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:border-green-600" data-rate="0.65">65%</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-rate="0.50" disabled>50%</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-rate="0.55" disabled>55%</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-rate="0.60" disabled>60%</button>
+              <button class="option-btn px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-rate="0.70" disabled>70%</button>
             </div>
-            <p class="text-xs text-gray-500 mt-1">Rates are illustrative. Actual returns vary; H&W minimizes risk but does not eliminate it.</p>
+            <p class="text-xs text-gray-500 mt-1">Rate is automatically set based on investment amount. Actual returns vary; H&W minimizes risk but does not eliminate it.</p>
           </div>
 
           <!-- Calculator Result -->
@@ -112,11 +135,11 @@
             <div class="flex justify-between">
               <div>
                 <p class="text-xs text-gray-500">Fee / Platform (example)</p>
-                <p id="fee" class="text-sm">2.0% (example)</p>
+                <p id="fee" class="text-sm">5.0% (example)</p>
               </div>
               <div class="text-right">
                 <p class="text-xs text-gray-500">Projected Net Payout</p>
-                <p id="net" class="text-lg font-bold text-green-600">USD 7,350.00</p>
+                <p id="net" class="text-lg font-bold text-green-600">USD 7,125.00</p>
               </div>
             </div>
           </div>
@@ -200,22 +223,36 @@
               </div>
             </div>
 
-            <p class="mt-4 text-xs text-gray-500"><span class="font-medium">Disclaimer:</span> This is a  contract. It does  constitute investment advice or an offer to sell securities.</p>
+            <p class="mt-4 text-xs text-gray-500"><span class="font-medium">Disclaimer:</span> This is an illustrative contract template and simulation only. It does not constitute investment advice or an offer to sell securities.</p>
           </div>
         </div>
       </div>
     </div>
 
     <footer class="mt-8 text-center text-xs text-gray-500">
-      <p>H&W Investments Ltd —  Contract  for Sharam Abouali</p>
+      <p>H&W Investments Ltd — Simulated Contract Template for Sharam Abouali</p>
     </footer>
   </div>
 
   <script>
+    // Theme handling
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.body.classList.toggle('dark', savedTheme === 'dark');
+      document.getElementById('toggleMode').textContent = savedTheme === 'dark' ? 'Switch to Day Mode' : 'Switch to Night Mode';
+    }
+
+    document.getElementById('toggleMode').addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.getElementById('toggleMode').textContent = isDark ? 'Switch to Day Mode' : 'Switch to Night Mode';
+    });
+
     // Default selected values
     let selectedAmount = 5000;
     let selectedRate = 0.50;
-    const feePct = 0.02;
+    const feePct = 0.05;
 
     // DOM references
     const selAmountEl = document.getElementById('selAmount');
@@ -274,6 +311,23 @@
       return 'USD ' + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    function setRateByAmount(amount) {
+      const rateMap = {
+        5000: 0.50,
+        10000: 0.55,
+        30000: 0.60,
+        50000: 0.70
+      };
+      selectedRate = rateMap[amount] || 0.50;
+      document.querySelectorAll('.option-btn[data-rate]').forEach(btn => {
+        btn.classList.remove('bg-green-100', 'border-green-600', 'dark:bg-blue-100', 'dark:border-blue-600');
+        if (parseFloat(btn.dataset.rate) === selectedRate) {
+          btn.classList.add('bg-green-100', 'border-green-600', 'dark:bg-blue-100', 'dark:border-blue-600');
+        }
+      });
+      updateCalc();
+    }
+
     function updateCalc() {
       const gross = selectedAmount * (1 + selectedRate);
       const fee = gross * feePct;
@@ -281,7 +335,7 @@
       selAmountEl.textContent = formatUSD(selectedAmount);
       selRateEl.textContent = (selectedRate * 100).toFixed(0) + '%';
       grossEl.textContent = formatUSD(gross);
-      feeEl.textContent = (feePct * 100).toFixed(2) + '% (' + formatUSD(fee) + ')';
+      feeEl.textContent = (feePct * 100).toFixed(1) + '% (' + formatUSD(fee) + ')';
       netEl.textContent = formatUSD(net);
       termAmount.textContent = formatUSD(selectedAmount);
       termRate.textContent = (selectedRate * 100).toFixed(0) + '%';
@@ -291,25 +345,15 @@
     document.querySelectorAll('.option-btn[data-amount]').forEach(btn => {
       btn.addEventListener('click', () => {
         selectedAmount = Number(btn.dataset.amount);
-        document.querySelectorAll('.option-btn[data-amount]').forEach(b => b.classList.remove('bg-blue-100', 'border-blue-600'));
-        btn.classList.add('bg-blue-100', 'border-blue-600');
-        updateCalc();
-      });
-    });
-
-    document.querySelectorAll('.option-btn[data-rate]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        selectedRate = Number(btn.dataset.rate);
-        document.querySelectorAll('.option-btn[data-rate]').forEach(b => b.classList.remove('bg-green-100', 'border-green-600'));
-        btn.classList.add('bg-green-100', 'border-green-600');
-        updateCalc();
+        document.querySelectorAll('.option-btn[data-amount]').forEach(b => b.classList.remove('bg-blue-100', 'border-blue-600', 'dark:bg-blue-100', 'dark:border-blue-600'));
+        btn.classList.add('bg-blue-100', 'border-blue-600', 'dark:bg-blue-100', 'dark:border-blue-600');
+        setRateByAmount(selectedAmount);
       });
     });
 
     // Default active states
-    document.querySelector('.option-btn[data-amount="5000"]').classList.add('bg-blue-100', 'border-blue-600');
-    document.querySelector('.option-btn[data-rate="0.50"]').classList.add('bg-green-100', 'border-green-600');
-    updateCalc();
+    document.querySelector('.option-btn[data-amount="5000"]').classList.add('bg-blue-100', 'border-blue-600', 'dark:bg-blue-100', 'dark:border-blue-600');
+    setRateByAmount(selectedAmount);
 
     // Proceed: Prepare Transfer
     document.getElementById('startBtn').addEventListener('click', () => {
@@ -334,7 +378,7 @@ Investment Details:
 - Investment Amount: ${formatUSD(selectedAmount)}
 - Projected Return Rate: ${(selectedRate * 100).toFixed(0)}%
 - Projected Gross Payout: ${formatUSD(selectedAmount * (1 + selectedRate))}
-- Platform Fee (example): ${(feePct * 100).toFixed(2)}% (${formatUSD(selectedAmount * (1 + selectedRate) * feePct)})
+- Platform Fee (example): ${(feePct * 100).toFixed(1)}% (${formatUSD(selectedAmount * (1 + selectedRate) * feePct)})
 - Projected Net Payout: ${formatUSD(selectedAmount * (1 + selectedRate) * (1 - feePct))}
 
 Notes:
@@ -344,7 +388,7 @@ Signatures:
 - H&W Invest: ${hwSignatureText}
 - Client: ${clientSignatureText}
 
-.
+Disclaimer: This is an illustrative contract template and simulation only. It does not constitute investment advice or an offer to sell securities.
       `;
       const blob = new Blob([contractText], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
