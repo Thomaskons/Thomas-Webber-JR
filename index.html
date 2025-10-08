@@ -57,8 +57,7 @@
       body { background: none; }
       .container { background: none; }
       .card-contract { background: #fff; box-shadow: none; }
-      .option-btn, #startBtn, #pdfBtn, #signHW, #signClient, #clearHW, #clearClient,
-      #hwFirstName, #hwLastName, #clientFirstName, #clientLastName, .notes-section,
+      .option-btn, #startBtn, #pdfBtn, #signHW, #clearHW, #hwFirstName, #hwLastName, #clientFirstName, #clientLastName, .notes-section,
       #toggleMode { display: none; }
       .signature-text { font-size: 1.2rem; }
       .signature-line { padding-top: 1rem; }
@@ -85,7 +84,7 @@
           <div class="w-16 h-16 flex items-center justify-center rounded-xl shadow-sm p-3 logo-box">
             <img src="https://www.citypng.com/public/uploads/preview/hd-ethereum-eth-dark-logo-transparent-png-701751694771776u3bsi1hqxx.png" alt="ETH" class="eth-badge max-w-full max-h-full">
           </div>
-          <p class="text-sm text-gray-500">Prepared for <span class="font-medium">Sharam Abouali</span></p>
+          <p class="text-sm text-gray-500">Prepared for <span class="font-medium">Hans Petter Starholm</span></p>
         </div>
       </div>
     </div>
@@ -170,13 +169,13 @@
             <p class="text-xs text-gray-500 mb-2">Agreement between</p>
             <div class="mb-3">
               <p class="font-medium">H&W Invest</p>
-              <p class="text-sm text-gray-600">Provider: H&W Investments <br>/p>
+              <p class="text-sm text-gray-600">Provider: H&W Investments <br></p>
             </div>
 
             <p class="text-xs text-gray-500 mb-2">Client</p>
             <div class="mb-3">
-              <p class="font-medium">Sharam Abouali</p>
-              <p class="text-sm text-gray-600">Country: Denmark<br>Client ID: 287808</p>
+              <p class="font-medium">Hans Petter Starholm</p>
+              <p class="text-sm text-gray-600">Country: Norway<br>Client ID: 287808</p>
             </div>
 
             <h4 class="text-sm font-semibold text-gray-900 mb-2">Terms (Summary)</h4>
@@ -199,13 +198,13 @@
                 <div class="text-center w-1/2">
                   <p class="text-xs text-gray-500">For H&W Invest</p>
                   <div class="mt-2">
-                    <input id="hwFirstName" type="text" placeholder="First Name" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2">
-                    <input id="hwLastName" type="text" placeholder="Last Name" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2">
+                    <input id="hwFirstName" type="text" value="Thomas" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2" readonly>
+                    <input id="hwLastName" type="text" value="Webber" class="w-full border border-gray-300 rounded-lg p-2 text-sm mb-2" readonly>
                     <div class="flex gap-2 justify-center">
-                      <button id="signHW" class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs hover:bg-blue-200">Sign</button>
-                      <button id="clearHW" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-lg text-xs hover:bg-gray-300">Clear</button>
+                      <button id="signHW" class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs hover:bg-blue-200 hidden">Sign</button>
+                      <button id="clearHW" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-lg text-xs hover:bg-gray-300 hidden">Clear</button>
                     </div>
-                    <div id="hwSignature" class="signature-text mt-2"></div>
+                    <div id="hwSignature" class="signature-text mt-2">Thomas Webber</div>
                   </div>
                   <p class="text-xs text-gray-500 mt-2">Authorized Signatory</p>
                 </div>
@@ -220,7 +219,7 @@
                     </div>
                     <div id="clientSignature" class="signature-text mt-2"></div>
                   </div>
-                  <p class="text-xs text-gray-500 mt-2">Sharam Abouali</p>
+                  <p class="text-xs text-gray-500 mt-2">Hans Petter Starholm</p>
                 </div>
               </div>
             </div>
@@ -232,7 +231,7 @@
     </div>
 
     <footer class="mt-8 text-center text-xs text-gray-500">
-      <p>H&W Investments Ltd — Contract for Sharam Abouali</p>
+      <p>H&W Investments Ltd — Contract for Hans Petter Starholm</p>
     </footer>
   </div>
 
@@ -359,8 +358,8 @@
 
     // Proceed: Prepare Transfer
     document.getElementById('startBtn').addEventListener('click', () => {
-      if (isSignatureEmpty(hwFirstName, hwLastName, hwSignature) || isSignatureEmpty(clientFirstName, clientLastName, clientSignature)) {
-        alert('Please provide both H&W Invest and client signatures by entering names and clicking "Sign".');
+      if (isSignatureEmpty(clientFirstName, clientLastName, clientSignature)) {
+        alert('Please provide client signature by entering names and clicking "Sign".');
         return;
       }
       const notes = document.getElementById('notes').value;
@@ -370,10 +369,10 @@
 H&W Invest Ethereum Arbitrage Contract
 --------------------------------------
 Date: October 03, 2025
-Prepared for: Sharam Abouali
+Prepared for: Hans Petter Starholm
 Provider: H&W Investments Ltd
 Client ID: 287808
-Country: Denmark
+Country: Norway
 
 Investment Details:
 - Investment Amount: ${formatUSD(selectedAmount)}
@@ -403,8 +402,8 @@ Disclaimer: This is a real, legally binding contract. It does constitute investm
 
     // Download Contract (PDF)
     document.getElementById('pdfBtn').addEventListener('click', () => {
-      if (isSignatureEmpty(hwFirstName, hwLastName, hwSignature) || isSignatureEmpty(clientFirstName, clientLastName, clientSignature)) {
-        alert('Please provide both H&W Invest and client signatures before downloading the contract.');
+      if (isSignatureEmpty(clientFirstName, clientLastName, clientSignature)) {
+        alert('Please provide client signature before downloading the contract.');
         return;
       }
       window.print();
